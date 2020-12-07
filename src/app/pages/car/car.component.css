@@ -1,0 +1,54 @@
+.margin-top-100{
+    margin-top: 100px !important;
+}
+
+.carousel-thumbnails .carousel-indicators{
+    margin-bottom: -4.69rem;
+    position: absolute;
+}
+
+.carousel-thumbnails .carousel-indicators img{
+    max-width: 6.25rem;
+    height: auto;
+    overflow: hidden;
+}
+
+.carousel-indicators li{
+    width: 6.25rem;
+    height: auto;
+    max-width: 6.25rem;
+    border: none;
+}
+
+table.technical{
+    width: 98%;
+    margin-top: 2rem;
+}
+
+table.technical tbody tr > td{
+    font-weight: bold;
+}
+
+.fa-ul{
+    list-style-type: none;
+}
+
+.features ul{
+    column-count: 3;
+    column-gap: 30px;
+}
+
+.vehicle-price-box .badge{
+    width: 100%;
+    font-weight: 500;
+    font-size: 1.2rem;
+}
+
+.vehicle-price-box p{
+    margin: 0;
+    padding: 10px 0;
+}
+
+.vehicle-price-box{
+    padding-top: 1rem;
+}

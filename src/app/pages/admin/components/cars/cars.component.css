@@ -1,0 +1,34 @@
+.car-item{
+    border: 2px solid #000;
+    border-radius: 11px / 13px;
+    margin-top: 10px;
+}
+
+.car-item .title{
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.options table{
+    font-size: 12px;
+}
+
+.options table td.option{
+    font-weight: 700;
+    line-height: 18px;
+    font-size: 12px;
+    white-space: nowrap;
+    width: 110px;
+}
+
+.options table td.spec{
+    line-height: 18px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+
+}
+
+#search_form form input{
+    width: 40%;
+}
