@@ -17,7 +17,6 @@ import { AdminModule } from './pages/admin/admin.module';
 import { AdminComponent } from './pages/admin/admin.component';
 import { AdminRoutingModule } from './pages/admin/admin-rooting.module';
 import { HttpClientModule } from '@angular/common/http';
-import { ResolveGuard } from './guards/resolve.guard';
 import { UserService } from './services/user.service';
 
 @NgModule({

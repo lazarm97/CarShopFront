@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CarService } from 'src/app/services/car.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-cars',
@@ -6,10 +8,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cars.component.css']
 })
 export class CarsComponent implements OnInit {
+  cars : any;
+  response : object;
 
-  constructor() { }
+  constructor(
+    private activateRoute: ActivatedRoute,
+    private carService : CarService
+  ) { }
 
   ngOnInit(): void {
+    this.response = this.activateRoute.snapshot.data['cars'];
+    this.cars = this.response['items'];
+    console.log(this.response);
   }
 
 }

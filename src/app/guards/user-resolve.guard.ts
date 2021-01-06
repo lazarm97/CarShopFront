@@ -7,7 +7,7 @@ import  jwt_decode  from 'jwt-decode';
 @Injectable({
   providedIn: 'root'
 })
-export class ResolveGuard implements Resolve<any> {
+export class UserResolveGuard implements Resolve<any> {
   
   constructor(private userService: UserService){}
 

@@ -26,7 +26,7 @@ export class AddressService {
       "Street": addAddressForm.value.street
     };
 
-    this.http.put('http://localhost:5101/api/Address', data, {
+    this.http.post('http://localhost:5101/api/Address', data, {
       headers: { "Content-Type": "application/json" }
     }).subscribe(
       response => this.alertify.success("Success"),
@@ -40,5 +40,19 @@ export class AddressService {
       response => this.alertify.success("Deleted"),
       error => this.alertify.error("error")
     );
+  }
+
+  editAddress(addressId, editAddressForm){
+    var data = {
+      "City" : editAddressForm.value.city,
+      "Street" : editAddressForm.value.street
+    };
+
+    this.http.put('http://localhost:5101/api/Address/'+addressId,data,{
+      headers : { "Content-Type" : "application/json" }
+      }).subscribe(
+        response => this.alertify.success("Success"),
+        error => this.alertify.error("Error")
+      )
   }
 }

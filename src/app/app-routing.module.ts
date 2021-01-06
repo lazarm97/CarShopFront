@@ -9,7 +9,8 @@ import { AdminHomeComponent } from './pages/admin/components/home/admin-home.com
 import { CarsComponent } from './pages/admin/components/cars/cars.component';
 import { NewCarComponent } from './pages/admin/components/new-car/new-car.component';
 import { AdminProfileComponent } from './pages/admin/components/admin-profile/admin-profile.component';
-import { ResolveGuard } from './guards/resolve.guard';
+import { UserResolveGuard } from './guards/user-resolve.guard';
+import { CarResolveGuard } from './guards/car-resolve.guard';
 
 const routes: Routes = [
   {path : 'transport', component : TransportComponent, data:{slider:true}},
@@ -22,13 +23,13 @@ const routes: Routes = [
         path : 'home', component : AdminHomeComponent
       },
       {
-        path : 'cars', component : CarsComponent
+        path : 'cars', component : CarsComponent, resolve : { cars : CarResolveGuard }
       },
       {
         path : 'new-car', component : NewCarComponent
       },
       {
-        path : 'profile', component : AdminProfileComponent, resolve : { user : ResolveGuard }
+        path : 'profile', component : AdminProfileComponent, resolve : { user : UserResolveGuard }
       }
     ],
   }

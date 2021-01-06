@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { NgForm } from '@angular/forms';
-import { AlertifyService } from 'src/app/services/alertify.service';
-import { HttpClient } from '@angular/common/http';
 import { AddressService } from 'src/app/services/address.service';
 import { MobileService } from 'src/app/services/mobile.service';
+
 
 @Component({
   selector: 'app-admin-profile',
@@ -42,6 +41,14 @@ export class AdminProfileComponent implements OnInit {
     this.idAddress = id;
   }
 
+  onEditAddressId(id){
+    this.idAddress = id;
+  }
+
+  onEditAddress(editAddressForm : NgForm){
+    this.addressService.editAddress(this.idAddress,editAddressForm);
+  }
+
   getAddressId(e:any,id:string){
     if(e.target.checked){
       this.selectedAddresses.push(id);
@@ -71,6 +78,14 @@ export class AdminProfileComponent implements OnInit {
       this.selectedMobiles = this.selectedMobiles.filter(x => x != id);
     }
     console.log(this.selectedMobiles);
+  }
+
+  onEditMobileId(id){
+    this.idMobile = id;
+  }
+
+  onEditMobile(editMobileForm : NgForm){
+    this.mobileService.editMobile(this.idMobile,editMobileForm);
   }
 
 }

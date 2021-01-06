@@ -22,7 +22,7 @@ export class MobileService {
       "Number": addMobileForm.value.number
     };
 
-    this.http.put('http://localhost:5101/api/Mobile', data, {
+    this.http.post('http://localhost:5101/api/Mobile', data, {
       headers: { "Content-Type": "application/json" }
     }).subscribe(
       response => this.alertify.success("Success"),
@@ -36,5 +36,18 @@ export class MobileService {
       response => this.alertify.success("Deleted"),
       error => this.alertify.error("error")
     );
+  }
+
+  editMobile(mobileId, editMobileForm){
+    var data = {
+      "Number" : editMobileForm.value.number
+    };
+
+    this.http.put('http://localhost:5101/api/Mobile/'+mobileId,data,{
+      headers : { "Content-Type" : "application/json" }
+      }).subscribe(
+        response => this.alertify.success("Success"),
+        error => this.alertify.error("Error")
+      )
   }
 }

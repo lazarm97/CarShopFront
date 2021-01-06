@@ -52,7 +52,7 @@
                                     <td>{{ address.city }}</td>
                                     <td>{{ address.street }}</td>
                                     <td>
-                                        <a href="#editAddressModal" class="edit" data-toggle="modal"><i class="material-icons far fa-edit" data-toggle="tooltip" title="Edit"></i></a>
+                                        <a href="#editAddressModal" (click)="onEditAddressId(address.id)" class="edit" data-toggle="modal"><i class="material-icons far fa-edit" data-toggle="tooltip" title="Edit"></i></a>
                                         <a href="#deleteAddressModal" (click)="onDeleteAddressId(address.id)" class="delete" data-toggle="modal"><i class="material-icons far fa-trash-alt" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                                     </td>
                                 </tr>
@@ -98,7 +98,7 @@
                                     </td>
                                     <td>{{ mobile.number }}</td>
                                     <td>
-                                        <a href="#editMobilesModal" class="edit" data-toggle="modal"><i class="material-icons far fa-edit" data-toggle="tooltip" title="Edit"></i></a>
+                                        <a href="#editMobilesModal" (click)="onEditMobileId(mobile.id,mobile.number)" class="edit" data-toggle="modal"><i class="material-icons far fa-edit" data-toggle="tooltip" title="Edit"></i></a>
                                         <a href="#deleteMobilesModal" (click)="onDeleteMobileId(mobile.id)" class="delete" data-toggle="modal"><i class="material-icons far fa-trash-alt" data-toggle="tooltip" title="Delete"></i></a>
                                     </td>
                                 </tr>
@@ -142,7 +142,7 @@
                 <div id="editAddressModal" class="modal fade">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <form>
+                            <form #editAddressForm='ngForm' (ngSubmit)="onEditAddress(editAddressForm)">
                                 <div class="modal-header">						
                                     <h4 class="modal-title">Izmeni adresu</h4>
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -150,11 +150,11 @@
                                 <div class="modal-body">					
                                     <div class="form-group">
                                         <label>Grad</label>
-                                        <input type="text" class="form-control" required>
+                                        <input type="text" ngModel name="city" class="form-control" required>
                                     </div>
                                     <div class="form-group">
                                         <label>Ulica i broj</label>
-                                        <input type="email" class="form-control" required>
+                                        <input type="email" ngModel name="street" class="form-control" required>
                                     </div>		
                                 </div>
                                 <div class="modal-footer">
@@ -217,7 +217,7 @@
                 <div id="editMobilesModal" class="modal fade">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <form>
+                            <form #editMobileForm='ngForm' (ngSubmit)="onEditMobile(editMobileForm)">
                                 <div class="modal-header">						
                                     <h4 class="modal-title">Izmeni broj</h4>
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -225,7 +225,7 @@
                                 <div class="modal-body">					
                                     <div class="form-group">
                                         <label>Broj</label>
-                                        <input type="text" class="form-control" required>
+                                        <input type="text" ngModel name="number" class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="modal-footer">

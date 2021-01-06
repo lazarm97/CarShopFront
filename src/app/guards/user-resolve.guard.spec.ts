@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ResolveGuard } from './resolve.guard';
+import { UserResolveGuard } from './user-resolve.guard';
 
 describe('ResolveGuard', () => {
-  let guard: ResolveGuard;
+  let guard: UserResolveGuard;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    guard = TestBed.inject(ResolveGuard);
+    guard = TestBed.inject(UserResolveGuard);
   });
 
   it('should be created', () => {
