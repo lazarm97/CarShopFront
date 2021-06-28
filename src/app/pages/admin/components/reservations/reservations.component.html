@@ -1,0 +1,46 @@
+    <h3 class="pt-5">Rezervacije</h3>
+    <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" id="expiredReservation" (click)="onShowExpiredReservations($event)">
+        <label class="custom-control-label" for="expiredReservation">Prikaži istekle rezervacije</label>
+    </div>
+    <table class="table table-striped table-hover col-lg-12 mx-auto">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Ime i prezime</th>
+                <th scope="col">Email</th>
+                <th scope="col">Mobilni</th>
+                <th scope="col">Automobil</th>
+                <th scope="col">Br šasije</th>
+                <th scope="col">Datum i vreme</th>
+                <th scope="col">Status</th>
+                <th scope="col">Akcija</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let reservation of reservations; let i = index">
+            <tr>
+                <th scope="row">{{ i+1 }}</th>
+                <td>{{ reservation.userFirstName + " " + reservation.userLastName }}</td>
+                <td>{{ reservation.userEmail }}</td>
+                <td>{{ reservation.mobile }}</td>
+                <td>{{ reservation.brand + " " + reservation.model }}</td>
+                <td>{{ reservation.vin }}</td>
+                <td>{{ reservation.date + ' ' + reservation.time }}</td>
+                <td>{{ reservation.status }}</td>
+                <td>
+                    <a href="#" class="edit btn btn-warning mr-1" (click)="onCancelReservation(reservation.id)" data-toggle="modal">
+                        Otkaži
+                    </a>
+                    <a href="#" class="edit btn btn-warning mr-1" (click)="onStateReservation(reservation.id,'buy')" data-toggle="modal">
+                        Kupio
+                    </a>
+                    <a href="#" class="edit btn btn-warning mr-1" (click)="onStateReservation(reservation.id,'notBuy')" data-toggle="modal">
+                        Nije kupio
+                    </a>
+                    <a href="#" class="edit btn btn-warning" (click)="onStateReservation(reservation.id,'notArrive')" data-toggle="modal">
+                        Nije se pojavio
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>

@@ -1,0 +1,27 @@
+.gallery{
+    border: 1px solid black;
+    min-height: 100px;
+    min-width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.image-resize{
+    height:100%;
+    width:100%; 
+    object-fit:contain; 
+    object-position:center center;
+}
+
+.item i{
+    position:absolute;
+    left:82%;
+    top:10.5%;
+}
+
+.item{
+    padding-top: 10px;
+    height: 150px;
+}

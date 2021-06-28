@@ -1,15 +1,11 @@
-<!-- <div class="container-fluid">
-    <div class="row"> -->
-        <nav id="sidebarMenu" class="d-md-block bg-light sidebar collapse">
-            <div class="sidebar-sticky pt-3">
-                <ul class="nav flex-column">
-                    <li *ngFor="let nav of adminNavigation" class="nav-item">
-                        <a class="nav-link" routerLink="{{nav.url}}">{{nav.title}}
-                            <span class="sr-only">(current)</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    <!-- </div>
-</div> -->
+<nav id="sidebarMenu" class="d-md-block bg-light sidebar collapse">
+    <div class="sidebar-sticky pt-3">
+        <ul class="nav flex-column">
+            <li *ngFor="let nav of adminNavigation" class="nav-item">
+                <a class="nav-link" routerLink="{{nav.url}}">{{nav.title}}
+                    <span class="sr-only">(current)</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>

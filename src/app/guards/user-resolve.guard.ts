@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Resolve } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Resolve } from '@angular/router';
 import { UserService } from '../services/user.service';
 import  jwt_decode  from 'jwt-decode';
 
@@ -16,7 +15,7 @@ export class UserResolveGuard implements Resolve<any> {
     if(localStorage.getItem('token')){
       let token = (localStorage.getItem('token'));
       let userjson = jwt_decode(token);
-      let userId = userjson['AdminId'];
+      let userId = userjson['UserId'];
       return this.userService.getUser(userId);
     }
   }

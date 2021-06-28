@@ -1,1 +1,142 @@
-<p>new-car works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h3>Osnovne informacije</h3>
+            <hr>
+        </div>
+        <div class="col-lg-4">
+            <label for="manufacturer">Marka:</label>
+            <select class="form-control" (change)="changeManufacturer($event)">
+                <option value="0">Izaberi marku</option>
+                <option *ngFor="let manufacture of car['manufacturers']" value="{{manufacture.id}}">{{manufacture.name}}</option>
+            </select>
+        </div>
+        <div class="col-lg-4">
+            <label for="model">Model:</label>
+            <select class="form-control" (change)="changeModel($event)">
+                <option value="0">Izaberi model</option>
+                <option *ngFor="let model of modelList" value="{{model.id}}">{{model.name}}</option>
+            </select>
+        </div>
+        <div class="col-lg-4">
+            <label for="mark">Obeležje:</label>
+            <input type="text" class="form-control" [(ngModel)]="inputMark">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+            <label for="yearOfManufacturer">Godina proizvodnje:</label>
+            <select class="form-control" (change)="changeYear($event)">
+                <option value="0">Izaberi godinu</option>
+                <option *ngFor="let year of car['years']" value="{{year.id}}">{{year.year}}</option>
+            </select>
+        </div>
+        <div class="col-lg-4">
+            <label for="category">Karoserija:</label>
+            <select class="form-control" (change)="changeCategory($event)">
+                <option value="0">Izaberi tip karoserije</option>
+                <option *ngFor="let category of car['categories']" value="{{category.id}}">{{category.name}}</option>
+            </select>
+        </div>
+        <div class="col-lg-4">
+            <label for="vin">Broj šasije:</label>
+            <input type="text" class="form-control" [(ngModel)]="inputVin">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+            <label for="cubic">Kubikaža(cm3):</label>
+            <input type="text" class="form-control" [(ngModel)]="inputCubic">
+        </div>
+        <div class="col-lg-4">
+            <label for="power">Snaga(kw):</label>
+            <input type="text" class="form-control" [(ngModel)]="inputPower">
+        </div>
+        <div class="col-lg-4">
+            <label for="km">Kilometraža:</label>
+            <input type="text" class="form-control" [(ngModel)]="inputKm">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+            <label for="seats">Broj sedišta:</label>
+            <select class="form-control" (change)="changeSeat($event)">
+                <option value="0">Izaberi broj sedišta</option>
+                <option *ngFor="let seat of car['seats']" value="{{seat.id}}">{{seat.number}}</option>
+            </select>
+        </div>
+        <div class="col-lg-4">
+            <label for="doors">Broj vrata:</label>
+            <select class="form-control" (change)="changeDoor($event)">
+                <option value="0">Izaberi broj vrata</option>
+                <option *ngFor="let door of car['doors']" value="{{door.id}}">{{door.number}}</option>
+            </select>
+        </div>
+        <div class="col-lg-4">
+            <label for="fuel">Gorivo:</label>
+            <select class="form-control" (change)="changeFuel($event)">
+                <option value="0">Izaberi gorivo</option>
+                <option *ngFor="let fuel of car['fuels']" value="{{fuel.id}}">{{fuel.name}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+            <label for="transmission">Menjač:</label>
+            <select class="form-control" (change)="changeTransmission($event)">
+                <option value="0">Izaberi tip menjača</option>
+                <option *ngFor="let transmission of car['transmissions']" value="{{transmission.id}}">{{transmission.name}}</option>
+            </select>
+        </div>
+        <div class="col-lg-4">
+            <label for="color">Boja:</label>
+            <select class="form-control" (change)="changeColor($event)">
+                <option value="0">Izaberi boju</option>
+                <option *ngFor="let color of car['colors']" value="{{color.id}}">{{color.name}}</option>
+            </select>
+        </div>
+        <div class="col-lg-4">
+            <label for="price">Cena:</label>
+            <input type="text" class="form-control" [(ngModel)]="inputPrice">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <hr>
+            <h3>Oprema</h3>
+            <hr>
+        </div>
+        <div class="col-lg-3 form-check" *ngFor="let equipment of car['equipments']">
+            <input class="form-check-input" type="checkbox" (change)="changeSelection($event)" value="{{equipment.id}}" id="flexCheckIndeterminate">
+            <label class="form-check-label" for="flexCheckIndeterminate">
+                {{equipment.name}}
+            </label>
+        </div>
+    </div>  
+    <div class="row">
+        <div class="col-lg-12">
+            <hr>
+            <h3>Opis</h3>
+            <hr>
+        </div>
+        <div class="col-lg-12">
+            <textarea class="form-control" placeholder="Opis oglasa" style="height: 100px"  [(ngModel)]="inputDescription"></textarea>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <hr>
+            <h3>Unos slika</h3>
+            <hr>
+        </div>
+        <div class="gallery row">
+            <div class="col-lg-3 item" *ngFor="let image of totalImages; index as i;">
+                <i class="fas fa-times" (click)="onRemoveImage(i)"></i>
+                <img class="img-thumbnail image-resize" [src]="url[i]">
+            </div>
+        </div>
+    </div>
+    <input type="file" multiple (change)="onselectFile($event)" id="gallery-photo-add">
+    
+    <button class="btn btn-primary" type="submit" (click)="onUploadCar()" >Sačuvaj</button>
+</div>

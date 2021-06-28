@@ -12,7 +12,7 @@ export class AdminNavigationComponent implements OnInit {
   ngOnInit(): void {
     this.adminNavigation = [
       {
-        title : "Pocetna",
+        title : "Početna",
         url : "home"
       },
       {
@@ -24,8 +24,20 @@ export class AdminNavigationComponent implements OnInit {
         url : "new-car"
       },
       {
+        title : "Izmeni opcije automobila",
+        url : "update-car-options"
+      },
+      {
         title : "Moj profil",
         url : "profile"
+      },
+      {
+        title : "Banovani korisnici",
+        url : "ban-user"
+      },
+      {
+        title : "Rezervacije",
+        url : "reservations"
       }
     ];
   }

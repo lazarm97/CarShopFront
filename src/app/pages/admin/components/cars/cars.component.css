@@ -2,6 +2,7 @@
     border: 2px solid #000;
     border-radius: 11px / 13px;
     margin-top: 10px;
+    padding: 10px 0;
 }
 
 .car-item .title{
@@ -31,4 +32,21 @@
 
 #search_form form input{
     width: 40%;
+}
+
+#actions .btn{
+    padding: 10px 20px;
+    width: 100px;
+}
+
+#price{
+    text-align: center;
+}
+
+.card-img-top{
+    max-height: 110px;
+}
+
+.page-item{
+    cursor: pointer;
 }

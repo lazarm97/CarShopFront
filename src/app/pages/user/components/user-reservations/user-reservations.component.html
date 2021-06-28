@@ -1,0 +1,46 @@
+<h3>Rezervacije</h3>
+<h5>Otkazane rezervacije su označene crvenom bojom</h5>
+<table class="table table-striped table-hover col-lg-12 mx-auto">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Email</th>
+            <th scope="col">Mobilni</th>
+            <th scope="col">Automobil</th>
+            <th scope="col">Br šasije</th>
+            <th scope="col">Datum</th>
+            <th scope="col">Vreme</th>
+            <th scope="col">Akcija</th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let reservation of reservations; let i = index">
+        <tr *ngIf="reservation.status == 'Otkazana'" class="reservationRow">
+            <th scope="row">{{ i+1 }}</th>
+            <td>{{ reservation.userEmail }}</td>
+            <td>{{ reservation.mobile }}</td>
+            <td>{{ reservation.brand + " " + reservation.model }}</td>
+            <td>{{ reservation.vin }}</td>
+            <td>{{ reservation.date }}</td>
+            <td>{{ reservation.time }}</td>
+            <td>
+                <a href="#" class="edit btn btn-warning disabled" (click)="onCancelReservation(reservation.id)" data-toggle="modal">
+                    Otkazi
+                </a>
+            </td>
+        </tr>
+        <tr *ngIf="reservation.status != 'Otkazana'">
+            <th scope="row">{{ i+1 }}</th>
+            <td>{{ reservation.userEmail }}</td>
+            <td>{{ reservation.mobile }}</td>
+            <td>{{ reservation.brand + " " + reservation.model }}</td>
+            <td>{{ reservation.vin }}</td>
+            <td>{{ reservation.date }}</td>
+            <td>{{ reservation.time }}</td>
+            <td>
+                <a href="#" class="edit btn btn-warning" (click)="onCancelReservation(reservation.id)" data-toggle="modal">
+                    Otkaži
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</table>

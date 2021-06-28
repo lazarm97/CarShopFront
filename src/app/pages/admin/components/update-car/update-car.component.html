@@ -1,0 +1,144 @@
+<div class="container">
+    <form [formGroup]="carForm">
+        <div class="row">
+            <div class="col-lg-12">
+                <h3>Osnovne informacije</h3>
+                <hr>
+            </div>
+            <div class="col-lg-4">
+                <label for="manufacturer">Marka:</label>
+                <select formControlName="carManufacturer" class="form-control" (change)="changeManufacturer($event)">
+                    <option [value]="0">Izaberi marku</option>
+                    <option [value]="manufacture.id" *ngFor="let manufacture of carInfo['manufacturers']">{{manufacture.name}}</option>
+                </select>
+            </div>
+            <div class="col-lg-4">
+                <label for="model">Model:</label>
+                <select formControlName="carModel" class="form-control" (change)="changeModel($event)">
+                    <option [value]="0">Izaberi model</option>
+                    <option *ngFor="let model of modelList" [value]="model.id">{{model.name}}</option>
+                </select>
+            </div>
+            <div class="col-lg-4">
+                <label for="mark">Obeležje:</label>
+                <input formControlName="carMark" type="text" class="form-control" [(ngModel)]="inputMark">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <label for="yearOfManufacturer">Godina proizvodnje:</label>
+                <select formControlName="carYearOfManufacturer" class="form-control" (change)="changeYear($event)">
+                    <option [value]="0">Izaberi godinu</option>
+                    <option *ngFor="let year of carInfo['years']" [value]="year.id">{{year.year}}</option>
+                </select>
+            </div>
+            <div class="col-lg-4">
+                <label for="category">Karoserija:</label>
+                <select formControlName="carCategory" class="form-control" (change)="changeCategory($event)">
+                    <option [value]="0">Izaberi tip karoserije</option>
+                    <option *ngFor="let category of carInfo['categories']" [value]="category.id">{{category.name}}</option>
+                </select>
+            </div>
+            <div class="col-lg-4">
+                <label for="vin">Broj šasije:</label>
+                <input formControlName="carVin" type="text" class="form-control" [(ngModel)]="inputVin">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <label for="cubic">Kubikaža(cm3):</label>
+                <input formControlName="carCubic" type="text" class="form-control" [(ngModel)]="inputCubic">
+            </div>
+            <div class="col-lg-4">
+                <label for="power">Snaga(kw):</label>
+                <input formControlName="carPower" type="text" class="form-control" [(ngModel)]="inputPower">
+            </div>
+            <div class="col-lg-4">
+                <label for="km">Kilometraža:</label>
+                <input formControlName="carKm" type="text" class="form-control" [(ngModel)]="inputKm">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <label for="seats">Broj sedišta:</label>
+                <select formControlName="carSeat" class="form-control" (change)="changeSeat($event)">
+                    <option [value]="0">Izaberi broj sedišta</option>
+                    <option *ngFor="let seat of carInfo['seats']" [value]="seat.id">{{seat.number}}</option>
+                </select>
+            </div>
+            <div class="col-lg-4">
+                <label for="doors">Broj vrata:</label>
+                <select formControlName="carDoor" class="form-control" (change)="changeDoor($event)">
+                    <option [value]="0">Izaberi broj vrata</option>
+                    <option *ngFor="let door of carInfo['doors']" [value]="door.id">{{door.number}}</option>
+                </select>
+            </div>
+            <div class="col-lg-4">
+                <label for="fuel">Gorivo:</label>
+                <select formControlName="carFuel" class="form-control" (change)="changeFuel($event)">
+                    <option [value]="0">Izaberi gorivo</option>
+                    <option *ngFor="let fuel of carInfo['fuels']" [value]="fuel.id">{{fuel.name}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <label for="transmission">Menjac:</label>
+                <select formControlName="carTransmission" class="form-control" (change)="changeTransmission($event)">
+                    <option [value]="0">Izaberi tip menjaca</option>
+                    <option *ngFor="let transmission of carInfo['transmissions']" [value]="transmission.id">{{transmission.name}}</option>
+                </select>
+            </div>
+            <div class="col-lg-4">
+                <label for="color">Boja:</label>
+                <select formControlName="carColor" class="form-control" (change)="changeColor($event)">
+                    <option [value]="0">Izaberi boju</option>
+                    <option *ngFor="let color of carInfo['colors']" [value]="color.id">{{color.name}}</option>
+                </select>
+            </div>
+            <div class="col-lg-4">
+                <label for="price">Cena:</label>
+                <input formControlName="carPrice" type="text" class="form-control" [(ngModel)]="inputPrice">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <hr>
+                <h3>Oprema</h3>
+                <hr>
+            </div>
+            <div class="col-lg-3 form-check" *ngFor="let equipment of carInfo['equipments']">
+                <input [checked]="equipmetnList.includes(equipment.id+'')" class="form-check-input" type="checkbox" (change)="changeSelection($event)" value="{{equipment.id}}" id="flexCheckIndeterminate">
+                <label class="form-check-label" for="flexCheckIndeterminate">
+                    {{equipment.name}}
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <hr>
+                <h3>Opis</h3>
+                <hr>
+            </div>
+            <div class="col-lg-12">
+                <textarea formControlName="carNote" class="form-control" placeholder="Opis oglasa" style="height: 100px"  [(ngModel)]="inputDescription"></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <hr>
+                <h3>Unos slika</h3>
+                <hr>
+            </div>
+            <div class="gallery row">
+                <div class="col-lg-3 item" *ngFor="let image of totalImages; index as i;">
+                    <i class="fas fa-times" (click)="onRemoveImage(i,url[i])"></i>
+                    <img class="img-thumbnail image-resize" [src]="url[i]">
+                </div>
+            </div>
+        </div>
+        <input type="file" multiple (change)="onselectFile($event)" id="gallery-photo-add">
+        
+        <button class="btn btn-primary" type="submit" (click)="onUpdateCar()" >Sačuvaj</button>
+    </form>
+</div>

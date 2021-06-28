@@ -9,15 +9,23 @@ import { FooterComponent } from './layout/footer/footer.component';
 import { HomeComponent } from './pages/home/home.component';
 import { SellUsedCarsComponent } from './pages/sell-used-cars/sell-used-cars.component';
 import { CarComponent } from './pages/car/car.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './services/auth.service';
 import { AlertifyService } from './services/alertify.service';
 import { LogoutComponent } from './pages/admin/components/logout/logout.component';
 import { AdminModule } from './pages/admin/admin.module';
 import { AdminComponent } from './pages/admin/admin.component';
-import { AdminRoutingModule } from './pages/admin/admin-rooting.module';
-import { HttpClientModule } from '@angular/common/http';
-import { UserService } from './services/user.service';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
+import { NgxGalleryModule } from '@kolkov/ngx-gallery';
+import { TokenInterceptorService } from './services/token-interceptor.service';
+import { NewReservationComponent } from './pages/new-reservation/new-reservation.component';
+import { UserComponent } from './pages/user/user.component';
+import { UserNavigationComponent } from './pages/user/components/fixed/user-navigation/user-navigation.component';
+import { UserReservationsComponent } from './pages/user/components/user-reservations/user-reservations.component';
+import { UserProfileComponent } from './pages/user/components/user-profile/user-profile.component';
+import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
+
 
 @NgModule({
   declarations: [
@@ -30,18 +38,33 @@ import { UserService } from './services/user.service';
     SellUsedCarsComponent,
     CarComponent,
     LogoutComponent,
-    AdminComponent
+    AdminComponent,
+    NewReservationComponent,
+    UserComponent,
+    UserNavigationComponent,
+    UserReservationsComponent,
+    UserProfileComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     AdminModule,
-    HttpClientModule
-  ],
-  providers: [
+    HttpClientModule,
+    CommonModule,
+    NgxGalleryModule
+    ],
+  exports: [
+    ],
+    providers: [
     AuthService,
-    AlertifyService
+    AlertifyService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent,NavigationComponent]
 })

@@ -36,6 +36,7 @@ table.technical tbody tr > td{
 .features ul{
     column-count: 3;
     column-gap: 30px;
+    display: flex;
 }
 
 .vehicle-price-box .badge{
@@ -51,4 +52,16 @@ table.technical tbody tr > td{
 
 .vehicle-price-box{
     padding-top: 1rem;
+}
+
+.ngx-gallery { 
+    display: inline-block; margin-bottom: 20px; 
+}
+
+.badge{
+    width: 100% !important;
+}
+
+.price-value{
+    font-size: 30px;
 }
